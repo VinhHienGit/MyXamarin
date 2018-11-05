@@ -28,13 +28,12 @@ namespace LayoutEx
             myBoxView.Color = Color.FromRgb(r, g, b);
         }
 
-        private async void myButton_Clicked(object sender, EventArgs e)
+        private void myButton_Clicked(object sender, EventArgs e)
         {
-            await Task.WhenAll(
-                myButton.ColorTo(myButton.BackgroundColor, Color.Goldenrod,c=>myButton.BackgroundColor=c, 2000),
-                myButton.ColorTo(myButton.TextColor, Color.Gray, c => myButton.BackgroundColor = c, 2000));
-            myButton.BackgroundColor = Color.Default;
-            myButton.TextColor = Color.Default;
+            string name = myEntry.Text.Trim();
+            Label hello = new Label();
+            hello.Text = "Hi! " + name;
+            hello.TextColor = Color.BlueViolet;
         }
 
         private void btnAddPage_Clicked(object sender, EventArgs e)
