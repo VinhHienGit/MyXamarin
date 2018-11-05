@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:LayoutEx"
+             x:Class="LayoutEx.DemoTrigger">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:MultiTriggerConverter x:Key="hasBeenRGBData"/>
+            <!--<Style TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="TextColor" Value="Bisque"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="BackgroundColor" Value="Gray"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="BackgroundColor" Value="Wheat"/>
+            </Style>
+            <Style TargetType="BoxView">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="Color" Value="White"/>
+            </Style>
+            <Style x:Key="rgbEntry" TargetType="Entry">
+                <Setter Property="HeightRequest" Value="36"/>
+                <Setter Property="Margin" Value="0,0,0-10"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="Keyboard" Value="Numeric"/>
+                <Setter Property="MaxLength" Value="3"/>
+                <Setter Property="Text" Value=""/>
+            </Style>-->
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Demo Trigger Action!"/>
+            <Entry x:Name="myEntry"
+                   Placeholder="Your name">
+                <Entry.Triggers>
+                    <Trigger TargetType="Entry"
+                             Property="IsFocused"
+                             Value="True">
+                        <Setter Property="Placeholder" Value=""/>
+                        <Setter Property="BackgroundColor" Value="Pink"/>
+                    </Trigger>
+                </Entry.Triggers>
+            </Entry>
+            <Entry x:Name="myEntry1"
+                   Placeholder="Age">
+                <Entry.Triggers>
+                    <Trigger TargetType="Entry"
+                             Property="IsFocused"
+                             Value="True">
+                        <Setter Property="Placeholder" Value=""/>
+                        <Setter Property="BackgroundColor" Value="Pink"/>
+                    </Trigger>
+                </Entry.Triggers>
+            </Entry>
+            <Button x:Name="myButton"
+                    Text="Say hello me!"
+                    Clicked="myButton_Clicked">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button"
+                                 Binding="{Binding Source={x:Reference myEntry}, Path=Text.Length}"
+                                 Value="0">
+                        <Setter Property="IsEnabled" Value="False"/>
+                        <Setter Property="BackgroundColor" Value="LightGray"/>
+                    </DataTrigger>
+                    <EventTrigger Event="Clicked">
+                        <local:DemoEventTriggerClicked/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Grid Padding="5,5,0,5"
+                  HorizontalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Entry x:Name="red"
+                   Placeholder="0-->255"
+                   BackgroundColor="Red"
+                   Style="{StaticResource rgbEntry}"
+                   Grid.Row="0" Grid.Column="0">
+                    <Entry.Triggers>
+                        <Trigger TargetType="Entry"
+                         Property="IsFocused" Value="True">
+                            <Setter Property="Text" Value="" />
+                        </Trigger>
+                    </Entry.Triggers>
+                </Entry>
+                <Entry x:Name="green"
+                   Placeholder="0-->255"
+                   BackgroundColor="Green"
+                   Style="{StaticResource rgbEntry}"
+                   Grid.Row="0" Grid.Column="1">
+                    <Entry.Triggers>
+                        <Trigger TargetType="Entry"
+                         Property="IsFocused" Value="True">
+                            <Setter Property="Text" Value="" />
+                        </Trigger>
+                    </Entry.Triggers>
+                </Entry>
+                <Entry x:Name="blue"
+                   Placeholder="0-->255"
+                   BackgroundColor="Blue"
+                   Style="{StaticResource rgbEntry}"
+                   Grid.Row="0" Grid.Column="2">
+                    <Entry.Triggers>
+                        <Trigger TargetType="Entry"
+                         Property="IsFocused" Value="True">
+                            <Setter Property="Text" Value="" />
+                        </Trigger>
+                    </Entry.Triggers>
+                </Entry>
+            </Grid>
+            <Button x:Name="btnGetRGB"
+                    IsEnabled="False"
+                    Clicked="btnGetRGB_Clicked">
+                <Button.Triggers>
+                    <MultiTrigger TargetType="Button">
+                        <MultiTrigger.Conditions>
+                            <BindingCondition Binding="{Binding Source={x:Reference red}, 
+                                Path=Text, Converter={StaticResource hasBeenRGBData}}"
+                                              Value="True"/>
+                            <BindingCondition Binding="{Binding Source={x:Reference green}, 
+                                Path=Text, Converter={StaticResource hasBeenRGBData}}"
+                                              Value="True"/>
+                            <BindingCondition Binding="{Binding Source={x:Reference blue}, 
+                                Path=Text, Converter={StaticResource hasBeenRGBData}}"
+                                              Value="True"/>
+                        </MultiTrigger.Conditions>
+                        <Setter Property="IsEnabled" Value="True"/>
+                        <Setter Property="BackgroundColor" Value="Aqua"/>
+                    </MultiTrigger>
+                </Button.Triggers>
+            </Button>
+            <BoxView x:Name="myBoxView"
+                     WidthRequest="200"
+                     HeightRequest="100">
+            </BoxView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundImage="bg.png"
+             x:Class="LayoutEx.LoginFoody"
+             xmlns:local="clr-namespace:LayoutEx">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:IsValidData x:Key="hasBeenValidData"/>
+            <Style TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="13"/>
+            </Style>
+            <Style x:Key="lbTitle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Margin" Value="0, 30, 0, 30"/>
+            </Style>
+            <Style x:Key="btnLoginWith" TargetType="Button">
+                <Setter Property="WidthRequest" Value="330"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="FontAttributes" Value="None"/>
+            </Style>
+            <Style x:Key="lbText" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="Margin" Value="0, 20, 0, 20"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="10,10,10,0">
+            <Label Text="Đăng Nhập hoặc Đăng Ký"
+                   Style="{StaticResource lbTitle}"/>
+            <AbsoluteLayout Padding="5,0,5,0"
+                            HorizontalOptions="CenterAndExpand"
+                            HeightRequest="40">
+                <Button x:Name="btnLoginWithPhone"
+                        Text="Số điện thoại"
+                        BackgroundColor="Green"
+                        Style="{StaticResource btnLoginWith}"
+                        Clicked="btnLoginWithPhone_Clicked">
+                    <Button.Triggers>
+                        <EventTrigger Event="Clicked">
+                            <local:ButtonLoginWithTrigersAction/>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+                    <Image Source="iconPhone.png"
+                       AbsoluteLayout.LayoutFlags="All"
+                       AbsoluteLayout.LayoutBounds=".1, .5, .1, .6"/>
+            </AbsoluteLayout>
+            <AbsoluteLayout Padding="5,0,5,0"
+                            HorizontalOptions="CenterAndExpand"
+                            HeightRequest="40">
+                <Button x:Name="btnLoginWithFaceBook"
+                        Text="Facebook"
+                        BackgroundColor="Blue"
+                        Style="{StaticResource btnLoginWith}"
+                        Clicked="btnLoginWithFaceBook_Clicked">
+                    <Button.Triggers>
+                        <EventTrigger Event="Clicked">
+                            <local:ButtonLoginWithTrigersAction/>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Image Source="iconFB.png"
+                       AbsoluteLayout.LayoutFlags="All"
+                       AbsoluteLayout.LayoutBounds=".1, .5, .1, .6"/>
+            </AbsoluteLayout>
+            <AbsoluteLayout Padding="5,0,5,0"
+                            HorizontalOptions="CenterAndExpand"
+                            HeightRequest="40">
+                <Button x:Name="btnLoginWithGoogle"
+                        Text="Google"
+                        BackgroundColor="Red"
+                        Style="{StaticResource btnLoginWith}"
+                        Clicked="btnLoginWithGoogle_Clicked">
+                    <Button.Triggers>
+                        <EventTrigger Event="Clicked">
+                            <local:ButtonLoginWithTrigersAction/>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Image Source="iconGG.png"
+                       AbsoluteLayout.LayoutFlags="All"
+                       AbsoluteLayout.LayoutBounds=".1, .5, .1, .6"/>
+            </AbsoluteLayout>
+            <Label Text="Hoặc đăng nhập bằng tài khoản của bạn"
+                   Style="{StaticResource lbText}"/>
+            <Frame
+                Padding="1,1,1,1"
+                BorderColor="Gray">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="38"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="38"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="bg.png" Aspect="AspectFill" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
+                    <Image Source="iconMail.png" Aspect="AspectFit" Grid.Row="0" Grid.Column="0"/>
+                    <Image Source="iconPass.png" Aspect="AspectFit" Grid.Row="2" Grid.Column="0"/>
+                    <Entry x:Name="txtuser"
+                        Placeholder="Địa chỉ Email của bạn" 
+                        Grid.Row="0" Grid.Column="1" Margin="0,0,0,-14">
+                        <Entry.Triggers>
+                            <Trigger TargetType="Entry"
+                                     Property="IsFocused"
+                                     Value="True">
+                                <Setter Property="Placeholder" Value="" />
+                            </Trigger>
+                        </Entry.Triggers>
+                    </Entry>
+                    <Entry x:Name="txtPass"
+                        Placeholder="Mật khẩu của bạn" 
+                        Grid.Row="2" Grid.Column="1" Margin="0,0,0,-9" 
+                        IsPassword="True">
+                        <Entry.Triggers>
+                            <Trigger TargetType="Entry"
+                                     Property="IsFocused"
+                                     Value="True">
+                                <Setter Property="Placeholder" Value="" />
+                            </Trigger>
+                        </Entry.Triggers>
+                    </Entry>
+                    <BoxView Color="Gray"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+                </Grid>
+            </Frame>
+            <Button x:Name="btnLogin"
+                    Text="Đăng nhập"
+                    BackgroundColor="White"
+                    BorderRadius="10">
+                <Button.Triggers>
+                    <MultiTrigger TargetType="Button">
+                        <MultiTrigger.Conditions>
+                            <BindingCondition Binding="{Binding Source={x:Reference txtuser},
+                                Path=Text.Length, Converter={StaticResource hasBeenValidData}}"
+                                              Value="true"/>
+                            <BindingCondition Binding="{Binding Source={x:Reference txtPass},
+                                Path=Text.Length, Converter={StaticResource hasBeenValidData}}"
+                                              Value="true"/>
+                        </MultiTrigger.Conditions>
+                        <Setter Property="BackgroundColor" Value="GreenYellow"/>
+                    </MultiTrigger>
+                </Button.Triggers>
+            </Button>
+            <StackLayout HorizontalOptions="CenterAndExpand">
+                <Label x:Name="lbFogetPass"
+                   Text="Quên mật khẩu?"
+                   Margin="0,20,0,20">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                        Tapped="TapGestureRecognizer_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView Color="Gray" HeightRequest="1" Margin="0,-28,0,0"/>
+            </StackLayout>
+            <Grid HorizontalOptions="CenterAndExpand"
+                  VerticalOptions="EndAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="199"/>
+                    <ColumnDefinition Width="115"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Chúng tôi sẽ không sử dụng thông tin của bạn với bất kỳ mục đích nào khác."
+                       FontSize="13"
+                       Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"/>
+                <Label Text="Bằng cách đăng ký bạn đồng ý"
+                       Grid.Row="1" Grid.Column="0"
+                       HorizontalOptions="EndAndExpand"/>
+                <StackLayout Grid.Row="1" Grid.Column="1">
+                    <Label 
+                        x:Name="lbTermsOfUse"
+                        TextColor="Blue"
+                        Text="điều khoản sử dụng"
+                        HorizontalOptions="StartAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="lbTerms" Tapped="lbTerms_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <BoxView Color="Blue" HeightRequest="1" Margin="0,-8,0,0"/>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

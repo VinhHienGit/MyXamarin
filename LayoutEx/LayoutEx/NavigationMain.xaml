@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LayoutEx.NavigationMain">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Entry x:Name="txtname"
+                   Placeholder="Your name"/>
+            <Entry x:Name="txtAge"
+                   Placeholder="Age"
+                   Keyboard="Numeric"/>
+            <Button x:Name="btnGotoColorPage"
+                    Text="Go to ColorPage"
+                    Clicked="btnGotoColorPage_Clicked"/>
+            <Button x:Name="btnGoToCaculator"
+                    Text="Go to Caculator"
+                    Clicked="btnGoToCaculator_Clicked"/>
+            <Button x:Name="btnGoToLoginFoody"
+                    Text="Go to LoginFoody"
+                    Clicked="btnGoToLoginFoody_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
