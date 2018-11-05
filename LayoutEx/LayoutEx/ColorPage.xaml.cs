@@ -28,14 +28,23 @@ namespace LayoutEx
             myBoxView.Color = Color.FromRgb(r, g, b);
         }
 
-        private void myButton_Clicked(object sender, EventArgs e)
+        private async void myButton_Clicked(object sender, EventArgs e)
         {
-
+            await Task.WhenAll(
+                myButton.ColorTo(myButton.BackgroundColor, Color.Goldenrod,c=>myButton.BackgroundColor=c, 2000),
+                myButton.ColorTo(myButton.TextColor, Color.Gray, c => myButton.BackgroundColor = c, 2000));
+            myButton.BackgroundColor = Color.Default;
+            myButton.TextColor = Color.Default;
         }
 
         private void btnAddPage_Clicked(object sender, EventArgs e)
         {
+            Navigation.InsertPageBefore(new GridCaculator(), this);
+        }
 
+        private void btnRemovePageBefore_Clicked(object sender, EventArgs e)
+        {
+            Navigation.RemovePage(this.Navigation.NavigationStack[this.Navigation.NavigationStack.Count - 2]);
         }
     }
 }

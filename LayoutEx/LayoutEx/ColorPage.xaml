@@ -169,9 +169,9 @@
                     Text="Insert Page Before"
                     Clicked="btnAddPage_Clicked"
                     Grid.Row="6" Grid.Column="1"/>
-            <Button x:Name="btnRemovePage"
+            <Button x:Name="btnRemovePageBefore"
                     Text="Remove Page Before"
-                    Clicked="btnAddPage_Clicked"
+                    Clicked="btnRemovePageBefore_Clicked"
                     Grid.Row="6" Grid.Column="3"/>
         </Grid>
     </ContentPage.Content>
