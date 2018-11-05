@@ -11,9 +11,9 @@ namespace LayoutEx
         protected override  async void Invoke(Button sender)
         {
             await Task.WhenAll(
-                sender.ColorTo(sender.BackgroundColor, Color.Goldenrod, c => sender.BackgroundColor = c, 2000),
+                sender.ColorTo(sender.BackgroundColor, Color.Blue, c => sender.BackgroundColor = c, 2000),
                 sender.ScaleTo(.7, 2000),
-                sender.ColorTo(sender.TextColor, Color.Gray, c => sender.BackgroundColor = c, 2000),
+                sender.ColorTo(sender.TextColor, Color.Red, c => sender.BackgroundColor = c, 2000),
                 sender.ScaleTo(1, 2000)
                 );
             sender.BackgroundColor = Color.Default;

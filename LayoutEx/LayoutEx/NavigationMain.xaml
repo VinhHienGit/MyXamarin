@@ -8,10 +8,12 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Entry x:Name="txtname"
-                   Placeholder="Your name"/>
+                   Placeholder="Your name"
+                   Text=""/>
             <Entry x:Name="txtAge"
                    Placeholder="Age"
-                   Keyboard="Numeric"/>
+                   Keyboard="Numeric"
+                   Text=""/>
             <Button x:Name="btnGotoColorPage"
                     Text="Go to ColorPage"
                     Clicked="btnGotoColorPage_Clicked"/>

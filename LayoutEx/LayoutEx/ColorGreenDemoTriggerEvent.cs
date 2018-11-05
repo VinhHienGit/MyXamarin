@@ -9,8 +9,8 @@ namespace LayoutEx
     {
         protected override void Invoke(Entry sender)
         {
-            int rgb = -1;
-            int.TryParse(sender.Text.Trim(), out rgb);
+            int rgb = 0;
+            bool isN = Int32.TryParse(sender.Text, out rgb);
             if(rgb >= 0 && rgb <= 255)
             {
                 sender.BackgroundColor = Color.FromRgb(0, rgb, 0);

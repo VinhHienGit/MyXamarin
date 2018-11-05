@@ -111,6 +111,9 @@
                          Property="IsFocused" Value="True">
                         <Setter Property="Placeholder" Value="" />
                     </Trigger>
+                    <EventTrigger Event="TextChanged">
+                        <local:ColorRedDemoTriggerEvent/>
+                    </EventTrigger>
                 </Entry.Triggers>
             </Entry>
             <Entry x:Name="green"
@@ -123,6 +126,9 @@
                          Property="IsFocused" Value="True">
                         <Setter Property="Placeholder" Value="" />
                     </Trigger>
+                    <EventTrigger Event="TextChanged">
+                        <local:ColorGreenDemoTriggerEvent/>
+                    </EventTrigger>
                 </Entry.Triggers>
             </Entry>
             <Entry x:Name="blue"
@@ -135,6 +141,9 @@
                          Property="IsFocused" Value="True">
                         <Setter Property="Placeholder" Value="" />
                     </Trigger>
+                    <EventTrigger Event="TextChanged">
+                        <local:ColorBlueDemoTriggerEvent/>
+                    </EventTrigger>
                 </Entry.Triggers>
             </Entry>
             <Button x:Name="btnGetRGB"

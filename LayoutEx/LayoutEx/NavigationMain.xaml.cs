@@ -23,7 +23,7 @@ namespace LayoutEx
         {
             string name = txtname.Text.Trim();
             int age = 0;
-            int.TryParse(txtAge.Text.Trim(), out age);
+            bool isNumber = int.TryParse(txtAge.Text.Trim(), out age);
             Contact cont = new Contact()
             {
                 Name = name,
